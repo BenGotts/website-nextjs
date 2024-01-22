@@ -1,4 +1,5 @@
 import { FaLinkedin, FaGithub, FaYoutube, FaTiktok, FaDonate } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
           </div>
           <div className="flex justify-center md:justify-end items-center gap-4 mt-4 md:mt-0">
             {/* <a href="/" className="hover:underline flex items-center">Home</a> */}
-            <a href="/about" className="hover:underline flex items-center">About</a>
+            <Link href="/about" className="hover:underline flex items-center">About</Link>
             <a href="mailto:benjgottschalk+website@gmail.com" className="hover:underline flex items-center">Contact</a>
             {/* <a href="/contact" className="hover:underline flex items-center">Contact</a> */}
             {/* Donate link, assuming you have a specific URL for donations */}

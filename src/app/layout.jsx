@@ -3,7 +3,6 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Providers } from './providers'
-import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,9 +16,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className='overflow-visible'>
       <link rel='icon' href='/bg.png' sizes='any' />
-      <body className={inter.className}>
+      <body className={`overflow-visible ${inter.className}`}>
         <Providers>
           <div className='flex flex-col min-h-screen'>
           <Header />

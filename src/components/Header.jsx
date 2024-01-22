@@ -1,4 +1,5 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Link, Button, ButtonGroup } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function Header() {
   const menuItems = [
