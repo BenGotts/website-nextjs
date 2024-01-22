@@ -5,7 +5,7 @@ export default function Connect() {
     <section className="max-w-4xl mx-auto px-4 py-8 text-center">
       <h2 className="text-3xl font-bold mb-6">Connect With Me</h2>
       <p className="text-lg text-gray-700 mb-4">Feel free to reach out or follow my work on these platforms:</p>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 text-sm">
         {/* Resume */}
         <a href="https://drive.google.com/file/d/1rF5JsKjjVT3RIUMWycToN_s2bZbocN60/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-gray-700 hover:text-black">
           <FaFilePdf className="w-8 h-8 mb-2" />

@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <Navbar disableAnimation isBordered className="bg-blue-600 justify-between mb-2">
-      <NavbarContent className="sm:hidden" justify="start">
+      <NavbarContent className="sm:hidden text-white" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
       <NavbarBrand>
