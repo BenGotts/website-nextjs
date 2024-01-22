@@ -1,8 +1,30 @@
-import { Navbar, NavbarBrand, NavbarContent, Link, Button, ButtonGroup } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Link, Button, ButtonGroup } from "@nextui-org/react";
 
 export default function Header() {
+  const menuItems = [
+    {
+      name: "Home",
+      href: "/"
+    },
+    {
+      name: "Competitions",
+      href: "/competitions"
+    },
+    {
+      name: "WCA",
+      href: "https://wca.bengottschalk.com"
+    },
+    {
+      name: "Projects",
+      href: "https://github.com/BenGotts?tab=repositories"
+    },
+  ]
+
   return (
-    <Navbar isBordered className="bg-blue-600 justify-between mb-2">
+    <Navbar disableAnimation isBordered className="bg-blue-600 justify-between mb-2">
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle />
+      </NavbarContent>
       <NavbarBrand>
         <Link href="/" className="text-white text-2xl">Ben Gottschalk</Link>
       </NavbarBrand>
@@ -14,6 +36,19 @@ export default function Header() {
           <Button as={Link} href="https://github.com/BenGotts?tab=repositories" target="_blank">Projects</Button>
         </ButtonGroup>
       </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={index}>
+            <Link
+              className="w-full "
+              href={item.href}
+              size="lg"
+            >
+              {item.name}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </Navbar>
   );
 }
