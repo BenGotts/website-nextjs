@@ -10,7 +10,6 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Ben Gottschalk</p>
           </div>
           <div className="flex justify-center md:justify-end items-center gap-4 mt-4 md:mt-0">
-            {/* <a href="/" className="hover:underline flex items-center">Home</a> */}
             <Link href="/about" className="hover:underline flex items-center">About</Link>
             <a href="mailto:benjgottschalk+website@gmail.com" className="hover:underline flex items-center">Contact</a>
             {/* <a href="/contact" className="hover:underline flex items-center">Contact</a> */}

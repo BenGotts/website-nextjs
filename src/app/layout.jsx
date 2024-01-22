@@ -1,24 +1,18 @@
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Providers } from './providers'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata = {
   title: 'Ben Gottschalk',
   description: 'A website for Ben Gottschalk',
-  icons: {
-    icon: '/bg.png'
-  }
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='overflow-visible'>
+    <html lang="en">
       <link rel='icon' href='/bg.png' sizes='any' />
-      <body className={`overflow-visible ${inter.className}`}>
+      <body>
         <Providers>
           <div className='flex flex-col min-h-screen'>
           <Header />

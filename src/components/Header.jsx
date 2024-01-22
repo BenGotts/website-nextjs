@@ -1,7 +1,11 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup } from "@nextui-org/react";
-import Link from "next/link";
+'use client'
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup, Link } from "@nextui-org/react";
+// import Link from "next/link";
+import { useState } from "react";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const menuItems = [
     {
       name: "Home",
@@ -22,7 +26,12 @@ export default function Header() {
   ]
 
   return (
-    <Navbar disableAnimation isBordered className="bg-blue-600 justify-between mb-2">
+    <Navbar 
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen} 
+      className="bg-blue-600 justify-between mb-2"
+    >
       <NavbarContent className="sm:hidden text-white" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
