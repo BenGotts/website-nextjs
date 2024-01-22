@@ -27,7 +27,7 @@ export default function Connect() {
           YouTube
         </a>
         {/* TikTok */}
-        <a href="https://www.tiktok.com/@BenGotts" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-gray-700 hover:text-black">
+        <a href="https://www.tiktok.com/@bengotts" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-gray-700 hover:text-black">
           <FaTiktok className="w-8 h-8 mb-2" />
           TikTok
         </a>

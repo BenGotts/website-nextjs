@@ -26,7 +26,7 @@ export default function Footer() {
             <a href="https://www.youtube.com/c/BenjaminGottschalk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 flex items-center">
               <FaYoutube />
             </a>
-            <a href="https://www.tiktok.com/@BenGotts" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 flex items-center">
+            <a href="https://www.tiktok.com/@bengotts" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 flex items-center">
               <FaTiktok />
             </a>
           </div>
