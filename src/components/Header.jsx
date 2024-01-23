@@ -1,6 +1,5 @@
 'use client'
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup, Link } from "@nextui-org/react";
-// import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
