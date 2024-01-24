@@ -1,79 +1,75 @@
-import { Card, CardBody, CardHeader, CardFooter, Divider, Link } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
+
+const experiences = [
+  {
+    title: "Software Development Engineer",
+    company: "Marchex (MPS)",
+    startDate: "Oct 2022",
+    endDate: "Sep 2023",
+    details: [
+      "Engineered Node.js backend for a high-volume API processing thousands of hours of call data.",
+      "Developed Python scripts for Sentry monitoring, enhancing system reliability.",
+      "Managed Node.js deployment using PM2, utilized AWS EC2 and Lambda for API development.",
+      "Crafted and executed complex SQL queries for data manipulation and analysis.",
+      "Enhanced features in existing EJS codebase, improving functionality.",
+      "Aided in the growth and development of the MPS team, similar to a startup environment."
+    ]
+  },
+  {
+    title: "Software Development Engineer in Test",
+    company: "Intel",
+    startDate: "Mar 2022",
+    endDate: "Oct 2022",
+    details: [
+      "Developed automation tools in C# and Python supporting both automation and validation teams.",
+      "Utilized C# and Gherkin to automate existing manual test cases from Jira, enhancing testing efficiency.",
+      "Designed test cases for manual validation, later automated for consistency and efficiency.",
+      "Assisted in migrating automation processes from Team City to Jenkins, improving development workflow.",
+      "Performed lab technician duties including system troubleshooting, manual validation, and general tech support."
+    ]
+  },
+  {
+    title: "Software Developer",
+    company: "Pour Soul Systems",
+    startDate: "Sep 2020",
+    endDate: "Jun 2021",
+    details: [
+      "Co-developed a Flutter mobile app for a startup, focusing on aiding bars in reducing waste and saving costs.",
+      "Implemented BLoC pattern for effective state management.",
+      "Practiced Agile Scrum framework, ensuring disciplined project management.",
+      "Demonstrated strong communication skills and accountability in team collaborations and external partnerships.",
+      "Utilized DynamoDB as the database backend, facilitating scalable and efficient data storage solutions."
+    ]
+  }
+];
 
 export default function Experience() {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-8">
+    <section className="max-w-4xl mx-auto px-4 py-8" id="Experience">
       <h2 className="text-3xl font-bold text-center md:text-left mb-6">Experience</h2>
       
-      {/* Marchex Experience */}
       <div className="space-y-4">
-        <Card fullWidth>
-          <CardHeader className="m-2 text-lg font-semibold">
-                <div className="flex h-5 items-center space-x-2">
-                    <div>Software Development Engineer</div>
-                    <Divider orientation="vertical" />
-                    <div>Marchex (MPS)</div>
-                </div>
+      {experiences.map((job, index) => (
+          <Card fullWidth key={index}>
+            <CardHeader className="m-2 text-lg font-semibold">
+              <div className="flex h-5 items-center space-x-2">
+                <div>{job.title}</div>
+                <Divider orientation="vertical" />
+                <div>{job.company}</div>
+              </div>
             </CardHeader>
-          <Divider />
-          <CardBody className="m-2">
-            <p className="text-md text-gray-600">Oct 2022 - Sep 2023</p>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Engineered Node.js backend for a high-volume API processing thousands of hours of call data.</li>
-              <li>Developed Python scripts for Sentry monitoring, enhancing system reliability.</li>
-              <li>Managed Node.js deployment using PM2, utilized AWS EC2 and Lambda for API development.</li>
-              <li>Crafted and executed complex SQL queries for data manipulation and analysis.</li>
-              <li>Enhanced features in existing EJS codebase, improving functionality.</li>
-              <li>Aided in the growth and development of the MPS team, similar to a startup environment.</li>
-            </ul>
-          </CardBody>
-          <Divider />
-        </Card>
-
-        {/* Intel Experience */}
-        <Card fullWidth>
-          <CardHeader className="m-2 text-lg font-semibold">
-                <div className="flex h-5 items-center space-x-2">
-                    <div>Software Development Engineer in Test</div>
-                    <Divider orientation="vertical" />
-                    <div>Intel</div>
-                </div>
-            </CardHeader>
-          <Divider />
-          <CardBody className="m-2">
-            <p className="text-md text-gray-600">Mar 2022 - Oct 2022</p>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Developed automation tools in C# and Python supporting both automation and validation teams.</li>
-              <li>Utilized C# and Gherkin to automate existing manual test cases from Jira, enhancing testing efficiency.</li>
-              <li>Designed test cases for manual validation, later automated for consistency and efficiency.</li>
-              <li>Assisted in migrating automation processes from Team City to Jenkins, improving development workflow.</li>
-              <li>Performed lab technician duties including system troubleshooting, manual validation, and general tech support.</li>
-            </ul>
-          </CardBody>
-          <Divider />
-        </Card>
-
-        {/* Pour Soul Systems Experience */}
-        <Card fullWidth>
-          <CardHeader className="m-2 text-lg font-semibold">
-                <div className="flex h-5 items-center space-x-2">
-                    <div>Software Developer</div>
-                    <Divider orientation="vertical" />
-                    <div>Pour Soul Systems</div>
-                </div>
-            </CardHeader>
-          <Divider />
-          <CardBody className="m-2">
-            <p className="text-md text-gray-600">Sep 2020 - Jun 2021</p>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Co-developed a Flutter mobile app for a startup, focusing on aiding bars in reducing waste and saving costs.</li>
-              <li>Implemented BLoC pattern for effective state management.</li>
-              <li>Practiced Agile Scrum framework, ensuring disciplined project management.</li>
-              <li>Demonstrated strong communication skills and accountability in team collaborations and external partnerships.</li>
-            </ul>
-          </CardBody>
-          <Divider />
-        </Card>
+            <Divider />
+            <CardBody className="m-2">
+              <p className="text-md text-gray-600">{job.startDate === job.endDate ? job.startDate : `${job.startDate} - ${job.endDate ? job.endDate : "Present"}`}</p>
+              <ul className="list-disc pl-5 text-gray-700">
+                {job.details.map((detail, detailIndex) => (
+                  <li key={detailIndex}>{detail}</li>
+                ))}
+              </ul>
+            </CardBody>
+            <Divider />
+          </Card>
+        ))}
       </div>
     </section>
   )

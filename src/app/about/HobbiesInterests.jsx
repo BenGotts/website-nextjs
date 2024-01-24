@@ -1,6 +1,6 @@
 export default function HobbiesInterests() {
     return (
-        <section className="max-w-4xl mx-auto px-4 py-8">
+        <section className="max-w-4xl mx-auto px-4 py-8" id="HobbiesInterests">
           <h2 className="text-3xl font-bold text-center md:text-left mb-6">Hobbies & Interests</h2>
           <div className="space-y-4">
             <p className="text-lg text-gray-700">
