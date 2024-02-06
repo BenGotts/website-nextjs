@@ -40,7 +40,7 @@ const projects = [
     {
       title: "Rubik's Cube Scrambling Program",
       startDate: "Dec 2018",
-      endDate: "Dec 2018",
+      endDate: "Aug 2020",
       technologies: "Python, OpenCV",
       details: [
         "Created a program for generating random Rubik's Cube scrambles with a visual representation using OpenCV.",
@@ -72,6 +72,28 @@ const projects = [
         ],
         githubLink: "https://github.com/BenGotts/LocalCubeData",
         projectLink: "https://cubedata.netlify.app/"
+      },
+      {
+        title: "Blackjack",
+        startDate: "Jan 2019",
+        endDate: "Jan 2019",
+        technologies: "C++",
+        details: [
+          "Implemented Blackjack (21) command line game in C++.",
+          "Allowed more than 1 user to play at a time."
+        ],
+        githubLink: "https://github.com/BenGotts/blackjack_cpp"
+      },
+      {
+        title: "PBL Trainer",
+        startDate: "Mar 2020",
+        endDate: "Mar 2020",
+        technologies: "Python, Replit",
+        details: [
+          "Implemented command line tool for Square-1 solvers to train the last solving step.",
+          "Uploaded to Replit and previously showcased on my personal website."
+        ],
+        githubLink: "https://github.com/BenGotts/pblTrainer"
       },
   ];
   
