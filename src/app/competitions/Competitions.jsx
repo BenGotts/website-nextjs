@@ -2,44 +2,13 @@ import { Card, CardBody, CardHeader, CardFooter, Divider, Link } from "@nextui-o
 import "@cubing/icons";
 import ReactCountryFlag from "react-country-flag";
 
-
-function formatDateRange(startDate, endDate) {
-    const start = new Date(startDate + "T00:00:00");
-    const end = new Date(endDate + "T00:00:00");
-  
-    // Extracting parts of the date for comparison and formatting
-    const startMonth = start.toLocaleDateString('en-US', { month: 'short' });
-    const startDay = start.getDate();
-    const startYear = start.getFullYear();
-  
-    const endMonth = end.toLocaleDateString('en-US', { month: 'short' });
-    const endDay = end.getDate();
-    const endYear = end.getFullYear();
-  
-    if (startDate === endDate) return `${endMonth} ${endDay}, ${endYear}`
-    // Constructing the date range string based on whether the start and end dates are in the same month/year
-    if (startYear === endYear) {
-      if (startMonth === endMonth) {
-        // Same month and year
-        return `${startMonth} ${startDay} - ${endDay}, ${endYear}`;
-      } else {
-        // Different months, but same year
-        return `${startMonth} ${startDay} - ${endMonth} ${endDay}, ${endYear}`;
-      }
-    } else {
-      // Different years
-      return `${startMonth} ${startDay}, ${startYear} - ${endMonth} ${endDay}, ${endYear}`;
-    }
-  }
-
-
 export default function Competitions({ competitions }) {
     const currentDate = new Date()
 
     const isCompetitionLive = (startDate, endDate) => {
-        const start = new Date(startDate + "T00:00:00");
-        const end = new Date(endDate + "T23:59:59");
-        return currentDate >= start && currentDate <= end;
+      const start = new Date(startDate + "T00:00:00");
+      const end = new Date(endDate + "T23:59:59");
+      return currentDate >= start && currentDate <= end;
     };
 
     return (
@@ -65,7 +34,7 @@ export default function Competitions({ competitions }) {
                     </CardHeader>
                     <Divider />
                     <CardBody className="m-2">
-                    <p>{formatDateRange(comp.start_date, comp.end_date)}</p>
+                    <p>{comp.date_range}</p>
 
                         <div>{comp.event_ids.map((id) => (
                             <span key={id} className={`m-1 text-lg cubing-icon event-${id}`}></span>
