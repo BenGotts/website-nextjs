@@ -2,7 +2,7 @@ import getCompetitions from "../api/competitions"
 import Competitions from "./Competitions"
 
 export const metadata = {
-  title: "Competitons",
+  title: "Competitions",
 }
 
 export default async function CompetitionsPage() {
