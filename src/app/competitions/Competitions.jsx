@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardBody, CardHeader, CardFooter, Divider, Link } from "@nextui-org/react";
 import "@cubing/icons";
 import ReactCountryFlag from "react-country-flag";
@@ -15,14 +17,10 @@ export default function Competitions({ competitions }) {
         <>
             {competitions ? 
             competitions.map((comp) => (
-                <a key={comp.id} 
-                   href={comp.url} 
-                   target="_blank"
-                   className="m-2"
-                >
                 <Card
+                      key={comp.id}
                       fullWidth
-                      isHoverable
+                      onPress={() => window.open(comp.url, '_blank')}
                       >
                     <CardHeader className="m-2">
                         <div className="flex h-5 items-center space-x-2">
@@ -52,7 +50,6 @@ export default function Competitions({ competitions }) {
                         </Link>
                     </CardFooter>)}
                 </Card>
-            </a>
             ))
             : <div>No upcoming competitions</div>}
         </>
