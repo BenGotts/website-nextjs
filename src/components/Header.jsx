@@ -1,5 +1,5 @@
 'use client'
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup, Link } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenuItem, NavbarMenu, NavbarMenuToggle, Button, ButtonGroup, Link, NavbarItem } from "@nextui-org/react";
 import { useState } from "react";
 
 export default function Header() {
@@ -29,14 +29,19 @@ export default function Header() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen} 
-      className="bg-blue-600 justify-between mb-2"
+      className="bg-blue-600 mb-2"
     >
       <NavbarContent className="sm:hidden text-white" justify="start">
-        <NavbarMenuToggle />
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu" }
+          className="sm:hidden"
+        />
       </NavbarContent>
-      <NavbarBrand>
-        <Link href="/" className="text-white text-2xl">Ben Gottschalk</Link>
-      </NavbarBrand>
+      <NavbarContent justify="start">
+        <NavbarBrand>
+          <Link href="/" className="text-white text-2xl">Ben Gottschalk</Link>
+        </NavbarBrand>
+      </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <ButtonGroup color="primary">
           <Button as={Link} href="/">Home</Button>
@@ -45,6 +50,9 @@ export default function Header() {
           <Button as={Link} href="https://github.com/BenGotts?tab=repositories" target="_blank">Projects</Button>
         </ButtonGroup>
       </NavbarContent>
+
+      <NavbarContent justify="end" />
+
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>

@@ -1,12 +1,11 @@
-// import { useEffect } from "react";
-import AboutMe from "./AboutMe";
-import Connect from "./Connect";
-import Experience from "./Experience";
-import HobbiesInterests from "./HobbiesInterests";
-import MyProjects from "./MyProjects";
+import AboutMe from "@/components/about/AboutMe";
+import Connect from "@/components/about/Connect";
+import Experience from "@/components/about/Experience";
+import HobbiesInterests from "@/components/about/HobbiesInterests";
+import MyProjects from "@/components/about/MyProjects";
 
 export const metadata = {
-  title: 'About Me - Benjamin Gottschalk',
+  title: 'About Me | bengottschalk.com',
   description: 'Learn more about Benjamin Gottschalk and how to connect with him.',
 }
 

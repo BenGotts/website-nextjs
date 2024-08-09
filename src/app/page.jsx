@@ -1,20 +1,17 @@
-'use client'
-import { useState, useEffect } from 'react';
 import YoutubeVideo from "@/components/YoutubeVideo";
-import getRecetVideo from "./api/recentVideo";
-import Connect from "./about/Connect";
+import Connect from "../components/about/Connect";
 
-export default function Home() {
-  const [videoId, setVideoId] = useState('');
+export const revalidate = 3600;
+export const metadata = {
+  title: 'Home | bengottschalk.com',
+  description: 'The official website for Benjamin Gottschalk.',
+}
 
-  useEffect(() => {
-    const fetchVideoId = async () => {
-      const id = await getRecetVideo();
-      setVideoId(id);
-    };
-
-    fetchVideoId();
-  }, []);
+export default async function Home() {
+  const videoId = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUY4J5vw3Ed8Rc3Njc-2qzfg&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`, { next: { revalidate: 3600 }})
+  .then(response => response.json())
+  .then(data => { return data['items'][0]['contentDetails']['videoId'] })
+  .catch(err => console.error(err))
 
   return (
     <div className="flex flex-col justify-center items-center m-6">
