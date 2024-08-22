@@ -15,7 +15,7 @@ export default async function CompetitionsPage() {
   competitions.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.end_date.localeCompare(b.end_date))
 
   return (
-    <div className="m-4">
+    <div className="m-4 flex-grow">
       <Competitions competitions={competitions} />
     </div>
   )

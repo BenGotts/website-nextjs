@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function About() {
   return (
-    <div className="p-4">
+    <div className="p-4 flex-grow">
       <AboutMe />
       <HobbiesInterests />
       <Experience />
