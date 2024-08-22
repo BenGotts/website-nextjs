@@ -47,7 +47,7 @@ export default function ContactForm() {
         <div className="mx-auto max-w-md flex-1 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-[#0077b6]">Thank You!</h2>
           <p className="mt-4 text-lg text-[#333]">
-            Your message has been sent successfully. We'll get back to you soon.
+            Your message has been sent successfully. I'll get back to you soon.
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
