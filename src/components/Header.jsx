@@ -22,6 +22,18 @@ export default function Header() {
       name: "Projects",
       href: "https://github.com/BenGotts?tab=repositories"
     },
+    {
+      name: "About",
+      href: "/about"
+    },
+    {
+      name: "Contact",
+      href: "/contact"
+    },
+    {
+      name: "Donate",
+      href: "https://ko-fi.com/bengottschalk"
+    },
   ]
 
   return (
@@ -29,7 +41,7 @@ export default function Header() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen} 
-      className="bg-blue-600 mb-2"
+      className="bg-blue-600 sticky"
     >
       <NavbarContent className="sm:hidden text-white" justify="start">
         <NavbarMenuToggle

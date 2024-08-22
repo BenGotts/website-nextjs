@@ -1,5 +1,5 @@
 import YoutubeVideo from "@/components/YoutubeVideo";
-import Connect from "../components/about/Connect";
+import Connect from "@/components/about/Connect";
 
 export const revalidate = 3600;
 export const metadata = {
@@ -14,7 +14,7 @@ export default async function Home() {
   .catch(err => console.error(err))
 
   return (
-    <div className="flex flex-col justify-center items-center m-6">
+    <div className="flex flex-col flex-grow justify-center items-center m-6">
       <YoutubeVideo videoId={videoId} />
       <Connect />
     </div>
