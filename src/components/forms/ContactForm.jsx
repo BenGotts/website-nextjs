@@ -2,9 +2,17 @@
 
 import { contact } from "@/actions/contact";
 import { ContactFormSchema } from "@/lib/schemas";
+import { useState } from "react";
 
 export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
   const clientAction = async (formData) => {
+    setIsSubmitting(true);
+    setError("");
+
     const contactData = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -14,10 +22,42 @@ export default function ContactForm() {
     const result = ContactFormSchema.safeParse(contactData);
     if (!result.success) {
       console.log(result.error.issues);
+      setError("Please check your inputs and try again.");
+      setIsSubmitting(false);
       return;
     }
 
-    await contact(result.data);
+    try {
+      const response = await contact(result.data);
+      if (response.success) {
+        setIsSubmitted(true);
+      } else {
+        setError("An error occurred while sending your message. Please try again.");
+      }
+    } catch (error) {
+      setError("An unexpected error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  if (isSubmitted) {
+    return (
+      <div className="py-8 px-4 sm:px-6 lg:px-8 flex-grow">
+        <div className="mx-auto max-w-md flex-1 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-[#0077b6]">Thank You!</h2>
+          <p className="mt-4 text-lg text-[#333]">
+            Your message has been sent successfully. We'll get back to you soon.
+          </p>
+          <button
+            onClick={() => setIsSubmitted(false)}
+            className="mt-6 inline-flex justify-center rounded-md bg-[#0077b6] py-3 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#005a8c] focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:ring-offset-2"
+          >
+            Send Another Message
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -28,6 +68,9 @@ export default function ContactForm() {
           Have a question or want to work together? Fill out the form below and I'll get back to you as soon as
           possible.
         </p>
+        {error && (
+          <p className="mt-4 text-red-600">{error}</p>
+        )}
         <form action={clientAction} className="mt-8 space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-[#0077b6]">
@@ -76,9 +119,10 @@ export default function ContactForm() {
           <div>
             <button
               type="submit"
-              className="inline-flex w-full justify-center rounded-md bg-[#0077b6] py-3 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#005a8c] focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:ring-offset-2"
+              disabled={isSubmitting}
+              className={`inline-flex w-full justify-center rounded-md bg-[#0077b6] py-3 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#005a8c] focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:ring-offset-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              Submit
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
