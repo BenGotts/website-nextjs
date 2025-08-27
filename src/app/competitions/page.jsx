@@ -25,10 +25,10 @@ export default async function CompetitionsPage() {
   .catch(err => { console.error(err); return []});
 
   return (
-    <div className="m-4 space-y-4 flex-grow">
+    <div className="m-2 sm:m-4 space-y-3 sm:space-y-4 flex-grow">
       <OngoingCompetitions competitions={ongoingCompetitions} />
       <UpcomingCompetitions competitions={upcomingCompetitions} />
-      <Divider />
+      <Divider className="my-2 sm:my-4" />
       <PastCompetitions competitions={pastCompetitions} />
     </div>
   )

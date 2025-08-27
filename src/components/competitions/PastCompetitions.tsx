@@ -35,9 +35,9 @@ export default function PastCompetitions({ competitions }) {
                     aria-label="Past Competitions"
                     title={
                         <div className="w-full">
-                            <div className="flex items-center justify-between mb-3">
-                                <div className="flex items-center space-x-3">
-                                    <span className="text-xl font-semibold">Past Competitions</span>
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 space-y-2 sm:space-y-0">
+                                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                                    <span className="text-lg sm:text-xl font-semibold">Past Competitions</span>
                                     <Chip size="sm" variant="flat" color="default">
                                         {competitions.length} total
                                     </Chip>
@@ -52,20 +52,20 @@ export default function PastCompetitions({ competitions }) {
                                         </Chip>
                                     )}
                                 </div>
-                                <div className="text-sm text-gray-600">
+                                <div className="text-xs sm:text-sm text-gray-600">
                                     {isExpanded ? "Click to collapse" : "Click to expand"}
                                 </div>
                             </div>
                             
                             {/* Preview when collapsed */}
                             {!isExpanded && (
-                                <div className="px-4 py-3 bg-gray-50 rounded-lg">
-                                    <div className="text-sm text-gray-600 mb-2">Recent competitions:</div>
-                                    <div className="flex flex-wrap gap-2">
+                                <div className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 rounded-lg">
+                                    <div className="text-xs sm:text-sm text-gray-600 mb-2">Recent competitions:</div>
+                                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                         {competitions.slice(0, 8).map((comp) => (
                                             <div
                                                 key={comp.id}
-                                                className="inline-flex items-center space-x-1 px-2 py-1 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:border-gray-300 transition-colors cursor-pointer"
+                                                className="inline-flex items-center space-x-1 px-1.5 sm:px-2 py-1 bg-white border border-gray-200 rounded-md text-xs text-gray-700 hover:border-gray-300 transition-colors cursor-pointer"
                                                 onClick={() => window.open(comp.url, '_blank')}
                                                 title={`${comp.name} - ${comp.date_range}`}
                                             >
@@ -74,8 +74,8 @@ export default function PastCompetitions({ competitions }) {
                                                     svg 
                                                     className="text-xs" 
                                                 />
-                                                <span className="truncate max-w-24">{comp.name}</span>
-                                                <span className="text-gray-500">({comp.date_range})</span>
+                                                <span className="truncate max-w-16 sm:max-w-24">{comp.name}</span>
+                                                <span className="text-gray-500 hidden sm:inline">({comp.date_range})</span>
                                             </div>
                                         ))}
                                         {competitions.length > 8 && (
@@ -91,8 +91,8 @@ export default function PastCompetitions({ competitions }) {
                 >
                     {/* Full expanded view */}
                     <Card className="w-full">
-                        <CardBody className="p-4">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                        <CardBody className="p-2 sm:p-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3">
                                 {competitions.map((comp) => {
                                     const isMyDelegate = comp.delegates?.some(delegate => delegate.wca_id === WCA_ID);
                                     const isMyOrganizer = comp.organizers?.some(organizer => organizer.wca_id === WCA_ID);
@@ -100,14 +100,14 @@ export default function PastCompetitions({ competitions }) {
                                     return (
                                         <div
                                             key={comp.id}
-                                            className="border border-gray-200 rounded-lg p-3 hover:border-gray-300 hover:shadow-md transition-all cursor-pointer group bg-white hover:bg-gray-50"
+                                            className="border border-gray-200 rounded-lg p-2 sm:p-3 hover:border-gray-300 hover:shadow-md transition-all cursor-pointer group bg-white hover:bg-gray-50"
                                             onClick={() => window.open(comp.url, '_blank')}
                                         >
-                                            <div className="space-y-2">
+                                            <div className="space-y-1.5 sm:space-y-2">
                                                 {/* Competition Name */}
-                                                <div className="font-medium text-sm line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
-                                                    <span>{comp.name}</span>
-                                                    <span className="text-blue-500 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="font-medium text-xs sm:text-sm line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                                                    <span className="flex-1 pr-1 sm:pr-2">{comp.name}</span>
+                                                    <span className="text-blue-500 text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
                                                         Click to view →
                                                     </span>
                                                 </div>
@@ -120,7 +120,7 @@ export default function PastCompetitions({ competitions }) {
                                                         <ReactCountryFlag 
                                                             countryCode={comp.country_iso2} 
                                                             svg 
-                                                            className="text-sm" 
+                                                            className="text-xs sm:text-sm" 
                                                         />
                                                     </div>
                                                 </div>
@@ -144,7 +144,7 @@ export default function PastCompetitions({ competitions }) {
                                                     {comp.event_ids.slice(0, 6).map((id) => (
                                                         <span 
                                                             key={id} 
-                                                            className={`text-lg cubing-icon event-${id}`}
+                                                            className={`text-base sm:text-lg cubing-icon event-${id}`}
                                                             title={id}
                                                         ></span>
                                                     ))}
@@ -157,7 +157,7 @@ export default function PastCompetitions({ competitions }) {
                                                 
                                                 {/* Results Link - Separate from card click */}
                                                 {comp.results_posted_at && (
-                                                    <div className="pt-2">
+                                                    <div className="pt-1 sm:pt-2">
                                                         <Link
                                                             href={`https://www.worldcubeassociation.org/competitions/${comp.id}/results/all`}
                                                             target="_blank"
