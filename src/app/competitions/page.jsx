@@ -2,7 +2,7 @@ import OngoingCompetitions from "@/components/competitions/OngoingCompetitions";
 import UpcomingCompetitions from "@/components/competitions/UpcomingCompetitions"
 import PastCompetitions from "@/components/competitions/PastCompetitions"
 import { WCA_ID } from "@/consts";
-import { Divider } from "@nextui-org/react";
+import { Separator } from "@/components/ui/separator";
 
 export const revalidate = 3600;
 export const metadata = {
@@ -28,7 +28,7 @@ export default async function CompetitionsPage() {
     <div className="m-2 sm:m-4 space-y-3 sm:space-y-4 flex-grow">
       <OngoingCompetitions competitions={ongoingCompetitions} />
       <UpcomingCompetitions competitions={upcomingCompetitions} />
-      <Divider className="my-2 sm:my-4" />
+      <Separator className="my-2 sm:my-4" />
       <PastCompetitions competitions={pastCompetitions} />
     </div>
   )

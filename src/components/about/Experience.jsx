@@ -1,4 +1,5 @@
-import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const experiences = [
   {
@@ -50,24 +51,27 @@ export default function Experience() {
       
       <div className="space-y-4">
       {experiences.map((job, index) => (
-          <Card fullWidth key={index}>
-            <CardHeader className="m-2 text-lg font-semibold">
-              <div className="flex h-5 items-center space-x-2">
-                <div>{job.title}</div>
-                <Divider orientation="vertical" />
-                <div>{job.company}</div>
+          <Card key={index} className="w-full">
+            <CardContent className="p-4">
+              <div className="text-lg font-semibold mb-3">
+                <div className="flex h-5 items-center space-x-2">
+                  <div>{job.title}</div>
+                  <Separator orientation="vertical" className="h-5" />
+                  <div>{job.company}</div>
+                </div>
               </div>
-            </CardHeader>
-            <Divider />
-            <CardBody className="m-2">
-              <p className="text-md text-gray-600">{job.startDate === job.endDate ? job.startDate : `${job.startDate} - ${job.endDate ? job.endDate : "Present"}`}</p>
-              <ul className="list-disc pl-5 text-gray-700">
-                {job.details.map((detail, detailIndex) => (
-                  <li key={detailIndex}>{detail}</li>
-                ))}
-              </ul>
-            </CardBody>
-            <Divider />
+              
+              <Separator className="my-3" />
+              
+              <div>
+                <p className="text-md text-gray-600 mb-3">{job.startDate === job.endDate ? job.startDate : `${job.startDate} - ${job.endDate ? job.endDate : "Present"}`}</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  {job.details.map((detail, detailIndex) => (
+                    <li key={detailIndex}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
           </Card>
         ))}
       </div>
