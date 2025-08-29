@@ -11,18 +11,23 @@ export const metadata = {
 }
 
 export default async function CompetitionsPage() {
-  const userInfo = await fetch(`https://www.worldcubeassociation.org/api/v0/users/${WCA_ID}?upcoming_competitions=true&ongoing_competitions=true`)
-  .then(response => response.json())
-  .then(data => { return data})
-  .catch(err => { console.error(err); return []});
-  
-  const upcomingCompetitions = userInfo.upcoming_competitions.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.end_date.localeCompare(b.end_date))
-  const ongoingCompetitions = userInfo.ongoing_competitions.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.end_date.localeCompare(b.end_date))
+  const userInfoPromise = fetch(`https://www.worldcubeassociation.org/api/v0/users/${WCA_ID}?upcoming_competitions=true&ongoing_competitions=true`)
+  .then(response => response.json());
 
-  const pastCompetitions = await fetch(`https://www.worldcubeassociation.org/api/v0/persons/${WCA_ID}/competitions`)
-  .then(response => response.json())
-  .then(data => { return data.sort((a, b) => b.start_date.localeCompare(a.start_date))})
-  .catch(err => { console.error(err); return []});
+  const pastCompetitionsPromise = fetch(`https://www.worldcubeassociation.org/api/v0/persons/${WCA_ID}/competitions`)
+  .then(response => response.json());
+
+  const [userInfo, pastCompetitionsData] = await Promise.all([
+    userInfoPromise,
+    pastCompetitionsPromise
+  ]).catch(err => {
+    console.error(err);
+    return [ { upcoming_competitions: [], ongoing_competitions: [] }, [] ];
+  });
+
+  const upcomingCompetitions = userInfo.upcoming_competitions.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.end_date.localeCompare(b.end_date));
+  const ongoingCompetitions = userInfo.ongoing_competitions.sort((a, b) => a.start_date.localeCompare(b.start_date) || a.end_date.localeCompare(b.end_date));
+  const pastCompetitions = pastCompetitionsData.sort((a, b) => b.start_date.localeCompare(a.start_date));
 
   return (
     <div className="m-2 sm:m-4 space-y-3 sm:space-y-4 flex-grow">
